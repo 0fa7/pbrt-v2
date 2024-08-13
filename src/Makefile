@@ -24,7 +24,7 @@ DEFS=-DPBRT_HAS_OPENEXR
 MARCH=-m64
 
 # change this to -g3 for debug builds
-OPT=-O2
+OPT=-std=c++98 -O2
 # comment out this line to enable assertions at runtime
 DEFS += -DNDEBUG
 
@@ -190,8 +190,6 @@ core/pbrtlex.cpp: core/pbrtlex.ll core/pbrtparse.cpp
 core/pbrtparse.cpp: core/pbrtparse.yy
 	@echo "YACC'ing pbrtparse.yy"
 	@$(YACC) -o $@ core/pbrtparse.yy
-	@if [ -e core/pbrtparse.cpp.h ]; then /bin/mv core/pbrtparse.cpp.h core/pbrtparse.hh; fi
-	@if [ -e core/pbrtparse.hpp ]; then /bin/mv core/pbrtparse.hpp core/pbrtparse.hh; fi
 
 ifeq ($(HAVE_DTRACE),1)
 core/dtrace.h: core/dtrace.d

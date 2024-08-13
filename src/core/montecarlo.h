@@ -41,14 +41,7 @@
 #include "geometry.h"
 #include "rng.h"
 
-// smallest floating point value less than one; all canonical random samples
-// should be <= this.
-#ifdef PBRT_IS_WINDOWS
-// sadly, MSVC2008 (at least) doesn't support hexidecimal fp constants...
 static const float OneMinusEpsilon=0.9999999403953552f;
-#else
-static const float OneMinusEpsilon=0x1.fffffep-1;
-#endif
 
 // Monte Carlo Utility Declarations
 struct Distribution1D {
